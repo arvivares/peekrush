@@ -23,7 +23,7 @@ Estado: **propuesta**, etapa 1. Nada de esto está implementado todavía.
                     +-------------+
 
    App web (este proyecto, React + TanStack Start)
-   -> solo interfaz: /tv, /host, /play. Alojable en Lovable o en cualquier hosting.
+   -> solo interfaz: /tv, /host, /play. Alojable mediante Docker, Node o cualquier hosting moderno.
 ```
 
 ## Responsabilidades

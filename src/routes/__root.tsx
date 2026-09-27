@@ -10,7 +10,6 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
@@ -37,9 +36,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#000000] px-4 selection:bg-white selection:text-black">
@@ -77,14 +73,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content" },
-      { title: "Logos" },
+      { title: "PeekRush" },
       { name: "description", content: "Juego competitivo de logos con TV y móviles." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Logos" },
+      { name: "author", content: "PeekRush" },
+      { property: "og:title", content: "PeekRush" },
       { property: "og:description", content: "Juego competitivo de logos con TV y móviles." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {

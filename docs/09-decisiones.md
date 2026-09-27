@@ -2,7 +2,7 @@
 
 Formato: contexto → decisión → alternativas → estado.
 
-**ADR-001 Monorepo con la app Lovable en la raíz.** Lovable exige su estructura en la raíz. Se añaden `apps/game-server` y `packages/contracts` al lado. Alt: repos separados (duplica contratos). *Aceptada.*
+**ADR-001 Estructura Monorepo.** Aplicación web cliente en la raíz con `apps/game-server` y `packages/contracts` desacoplados en el mismo repositorio para compartir contratos de TypeScript sin duplicación. Alt: repos separados. *Aceptada.*
 
 **ADR-002 Colyseus como servidor autoritativo.** Requisito del contexto; salas aisladas, estado sincronizado y reconexión nativos. Alt: Socket.IO a mano. *Confirmada.*
 

@@ -183,17 +183,6 @@ El script ejecuta:
 3. Despliegue con *health checks* de disponibilidad en HTTP, WebSocket y base de datos.
 4. Pruebas end-to-end automáticas post-despliegue en producción.
 
----
-
-## 🔗 Integración con Lovable
-
-This project was built with [Lovable](https://lovable.dev).
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/a381d655-8d58-461f-9104-81f5378495f8).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable.
 
 ---
 

@@ -1,9 +1,9 @@
 # 02 — Estructura de carpetas
 
-Principio: conservar intacta la estructura que Lovable necesita en la raíz (`src/`, `vite.config.ts`, `package.json`) y añadir el resto a su lado.
+Principio: estructura de monorepo con la aplicación web cliente en la raíz (`src/`, `vite.config.ts`, `package.json`), el servidor de juego Colyseus en `apps/game-server` y los contratos compartidos en `packages/contracts`.
 
 ```text
-/                          App web (TanStack Start) — raíz exigida por Lovable
+/                          App web (TanStack Start + Nitro)
 ├── src/
 │   ├── routes/
 │   │   ├── index.tsx      Portada: entrar con código / crear sala

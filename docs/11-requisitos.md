@@ -17,7 +17,7 @@
 - Imágenes parciales servidas por etapa; sin ocultación solo con CSS.
 - Sin recuperación transparente tras reinicio.
 - Una instancia, sin escalado horizontal. Sin pagos, chat, voz, vídeo ni cuentas.
-- Ejecutable fuera de Lovable; MIT; inventario de licencias.
+- Ejecución 100 % autónoma e independiente; MIT; inventario de licencias.
 
 ## Propuestos (ajustables)
 

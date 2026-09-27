@@ -1,14 +1,14 @@
-# 08 — Despliegue y conexión Lovable ↔ Colyseus
+# 08 — Despliegue y arquitectura Web ↔ Colyseus
 
 ## Qué se despliega dónde
 
-| Pieza | Despliegue | ¿Puede ir en Lovable? |
+| Pieza | Despliegue | Tipo de servicio |
 |---|---|---|
-| App web (interfaz) | Hosting web estático/SSR | Sí (opcional); también en cualquier hosting |
-| Servidor de juego Colyseus | Proceso Node persistente con WebSocket | **No** — requiere despliegue independiente |
-| PostgreSQL | Servicio propio junto al servidor | **No** — independiente |
+| App web (interfaz) | Contenedor web Nitro / SSR | Estático o SSR con Node/Nitro |
+| Servidor de juego Colyseus | Proceso Node persistente con WebSocket | Servicio de larga duración persistente |
+| PostgreSQL | Servicio de base de datos | Persistencia de partidas y catálogo |
 
-El alojamiento de Lovable ejecuta funciones sin estado de corta duración: no sirve para salas vivas ni WebSockets persistentes. Por eso Colyseus y PostgreSQL van aparte.
+El servidor de juego requiere un proceso de larga duración para mantener salas en memoria y conexiones WebSocket activas. Por eso la app web y el servidor Colyseus se despliegan como servicios dedicados (p. ej. orquestados con Docker Compose).
 
 ## Conexión
 
@@ -19,21 +19,20 @@ El alojamiento de Lovable ejecuta funciones sin estado de corta duración: no si
 
 ## Variables de entorno (servidor, privadas)
 
-`PORT`, `DATABASE_URL`, `TOKEN_SECRET`, `ALLOWED_ORIGINS`, `MEDIA_DIR`, `CONTENT_DIR`, `LOG_LEVEL`. Se entregará `deploy/.env.example` sin valores reales.
+`PORT`, `DATABASE_URL`, `TOKEN_SECRET`, `ALLOWED_ORIGINS`, `MEDIA_DIR`, `CONTENT_DIR`, `LOG_LEVEL`. Se entrega `deploy/.env.example` sin valores reales.
 
-## Opciones de alojamiento del servidor (pendiente de decisión)
+## Opciones de alojamiento del servidor
 
 | Opción | Pros | Contras |
 |---|---|---|
-| **VPS + Docker Compose + Caddy** (recomendada) | 100 % open source, reproducible, TLS automático, barato | Mantenimiento propio |
-| Fly.io | Despliegue sencillo, WebSocket OK | Plataforma propietaria (sustituible) |
-| Railway / Render | Muy sencillo, Postgres incluido | Coste variable, algunos planes duermen el proceso |
-| Colyseus Cloud | Especializado | Servicio gestionado propietario: no obligatorio por el principio del proyecto |
+| **VPS + Docker Compose + Caddy/Nginx** (recomendada) | 100 % open source, reproducible, TLS automático, económico | Mantenimiento propio |
+| Fly.io | Despliegue sencillo, WebSocket OK | Plataforma externa |
+| Railway / Render | Muy sencillo, Postgres incluido | Coste variable |
 
 Una sola instancia con muchas salas aisladas. Sin escalado horizontal hasta medir necesidad.
 
 ## Entornos
 
 - Local: `docker compose up` (Postgres + servidor) + `bun dev` (web).
-- Staging y producción: mismo compose con distintas variables.
-- Criterio final: partida completa con varios dispositivos reales en un despliegue independiente de Lovable.
+- Staging y producción: `deploy/docker-compose.yml` con Caddy/reverse proxy.
+- Criterio final: partida completa con varios dispositivos reales en un despliegue independiente y autohospedado.

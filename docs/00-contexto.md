@@ -27,7 +27,7 @@ capacidad demostrada antes de medirlo.
 
 PRINCIPIO ARQUITECTÓNICO
 
-La aplicación debe poder ejecutarse completamente fuera de Lovable.
+La aplicación es 100 % autónoma, autohospedada e independiente.
 
 Usar componentes open source para la aplicación, el servidor,
 la comunicación multijugador y la persistencia.
@@ -35,14 +35,10 @@ la comunicación multijugador y la persistencia.
 No introducir servicios gestionados propietarios como dependencia
 obligatoria para crear salas, transmitir mensajes o arbitrar partidas.
 
-Lovable es una herramienta de desarrollo y una opción de alojamiento,
-no el motor del juego.
-
 TECNOLOGÍAS PROPUESTAS
 
 Aplicación web:
-React y TypeScript, conservando el framework, el router y la estructura
-compatibles con el proyecto real de Lovable.
+React y TypeScript con TanStack Start, Nitro y Tailwind CSS.
 No migrar el proyecto de framework sin una necesidad justificada.
 
 Servidor de juego:
@@ -64,7 +60,7 @@ Documentar las licencias de las dependencias utilizadas.
 
 ESTRUCTURA DEL CÓDIGO
 
-Conservar la estructura web que Lovable necesita para funcionar.
+Conservar una estructura limpia y desacoplada de monorepo.
 
 Separar claramente:
 - Interfaz web.
@@ -246,4 +242,4 @@ reproducible.
 Documentar por separado la procedencia y permisos de los recursos.
 
 El criterio final es completar una partida con varios dispositivos reales
-en un despliegue independiente de Lovable.
+en un despliegue independiente y autohospedado.
